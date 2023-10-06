@@ -4,29 +4,30 @@ import './ChatGPT.css';
 const ChatGPT = () => {
 
     const [entryValue, setEntryValue]= useState("")
+    const [response, setResponse] = useState('');
 
     const postRequest=async(input)=>{
-        const url = `http://localhost:8080/`;
-        const response = await fetch(url, {
-            method: "POST",
-            headers: {"Content-Type": "text/plain"},
-            body: input ,
-        }).then(response => {
+        try {
+            const url = `http://localhost:8080/`;
+            const response = await fetch(url, {
+              method: "POST",
+              headers: { "Content-Type": "text/plain" },
+              body: input,
+            });
+        
             if (!response.ok) {
-                throw new Error('Network response was not ok');
+              throw new Error('Network response was not ok');
             }
-            return response.text(); // Read the response body as text
-        })
-        .then(data => {
-            console.log(data); // This will log the response body as a string
-        })
-        .catch(error => {
+        
+            const data = await response.text();
+        
+            // Set the response data in the component's state
+            setResponse(data);
+            console.log(data)
+          } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
-        })
-        return(<div>
-            <h2 >ChatGPT responded with: </h2>
-            <p if="${response != null}" text="${response}" />
-        </div>)
+          }
+       
     }
     const handleRequest = async(e) =>{
         e.preventDefault();
@@ -46,6 +47,11 @@ const ChatGPT = () => {
 		        </div>
 		    </fieldset>
         </form>
+
+        <div>
+        <h2>ChatGPT responded with:</h2>
+        <p>{response}</p> 
+      </div>
     </>)
 }
 export default ChatGPT;
