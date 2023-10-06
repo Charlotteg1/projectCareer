@@ -26,23 +26,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class ChatGPTController {
-
-    private static final String MAIN_PAGE = "index";
-
-    @GetMapping(path = "/")
-    public String index() {
-        return MAIN_PAGE;
-    }
-
+    
     @PostMapping(path = "/")
     public ResponseEntity<String> chat(@RequestBody String message) {
-//        try {
-//            model.addAttribute("request", dto.message());
-//            model.addAttribute("response", chatWithGpt3(dto.message()));
-//        } catch (Exception e) {
-//            model.addAttribute("response", "Error in communication with OpenAI ChatGPT API.");
-//        }
-//        return MAIN_PAGE;
         try {
             // Process the message (e.g., interact with OpenAI ChatGPT API)
             String response = chatWithGpt3(message);
