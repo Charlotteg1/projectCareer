@@ -26,7 +26,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
 public class ChatGPTController {
-    
+
     @PostMapping(path = "/")
     public ResponseEntity<String> chat(@RequestBody String message) {
         try {
