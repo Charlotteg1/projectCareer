@@ -1,0 +1,20 @@
+.form {
+    margin-top: 3%;
+}
+
+.form-group {
+    margin-top: 3%;
+}
+
+.form-group input{
+    width:80%;
+    font-size: large;
+    margin-left: 10%;
+}
+
+.row input{
+    width: 60%;
+    margin-top: 1%;
+    margin-left: 20%;
+    font-size: xx-large;
+}
