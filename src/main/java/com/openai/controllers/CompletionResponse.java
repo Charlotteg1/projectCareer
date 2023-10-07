@@ -1,4 +1,4 @@
-package de.bsi.openai;
+package com.openai.controllers;
 
 import java.util.List;
 import java.util.Optional;

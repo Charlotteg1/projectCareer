@@ -1,4 +1,4 @@
-package de.bsi.openai;
+package com.openai.configurations;
 
 
 import org.springframework.context.annotation.Configuration;

@@ -1,4 +1,4 @@
-package de.bsi.openai;
+package com.openai.controllers;
 
 public record CompletionRequest(String model, String prompt, double temperature, int max_tokens) {
 

@@ -1,6 +1,5 @@
-package de.bsi.openai;
+package com.openai.controllers;
 
-import ch.qos.logback.core.model.Model;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -9,8 +8,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.net.URI;
@@ -21,7 +18,6 @@ import java.net.http.HttpRequest.BodyPublishers;
 import java.net.http.HttpResponse;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.web.bind.annotation.RequestBody;
 
 @Controller
@@ -30,13 +26,9 @@ public class ChatGPTController {
     @PostMapping(path = "/")
     public ResponseEntity<String> chat(@RequestBody String message) {
         try {
-            // Process the message (e.g., interact with OpenAI ChatGPT API)
             String response = chatWithGpt3(message);
-
-            // Return the response data as JSON
             return ResponseEntity.ok(response);
         } catch (Exception e) {
-            // Handle exceptions and return an error response
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
                     .body("Error in communication with OpenAI ChatGPT API.");
         }
