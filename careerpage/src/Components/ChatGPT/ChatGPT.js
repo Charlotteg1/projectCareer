@@ -3,8 +3,10 @@ import './ChatGPT.css';
 
 const ChatGPT = () => {
 
-    const [entryValue, setEntryValue]= useState("")
+    const [entryValue, setEntryValue]= useState("");
+    const [idEntryValue, setIdEntryValue]= useState("");
     const [response, setResponse] = useState('');
+    const [currentUser, setCurrentUser]= useState("");
 
     const postRequest=async(input)=>{
         try {
@@ -34,9 +36,31 @@ const ChatGPT = () => {
         await postRequest(entryValue)
     }
 
+    const fetchEmployee= async ()=>{
+      const response = await fetch("http://localhost:8080/users/"+ idEntryValue)
+      const data = await response.json();
+      if(!response.ok){
+        alert("employee id in valid please try again")
+      }else{
+        setCurrentUser(data)
+      }
+
+    }
+
 // create form and get response
     return (<>
     <h1>Chat GPT send and response</h1>
+    {!currentUser && (<form className="form" onSubmit={fetchEmployee}>
+		    <fieldset>
+          <h4> enter employee id</h4>
+		        <div className="form-group">
+		            <input type="text" name="prompt" onChange={(e)=>{setIdEntryValue(e.target.value)}}required autoFocus/>
+		        </div>
+		        <div className="row">
+		            <input type="submit" value="Send" />
+		        </div>
+		    </fieldset>
+        </form>)}
         <form className="form" onSubmit={handleRequest}>
 		    <fieldset>
 		        <div className="form-group">

@@ -6,7 +6,7 @@ import jakarta.persistence.*;
 import java.util.List;
 
 @Entity
-public class JobPositions {
+public class JobPosition {
 
     @Column
     @Id
@@ -25,7 +25,7 @@ public class JobPositions {
     @JoinTable(name = "job_position_skills", joinColumns = @JoinColumn(name = "position_id"), inverseJoinColumns = @JoinColumn(name = "skill_id"))
     private List<Skill> skillsNeeded;
 
-    public JobPositions( JobTitle jobTitle, int band, int minExperience, List<Skill> skillsNeeded) {
+    public JobPosition(JobTitle jobTitle, int band, int minExperience, List<Skill> skillsNeeded) {
         this.jobTitle = jobTitle;
         this.band = band;
         this.minExperience = minExperience;

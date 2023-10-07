@@ -5,6 +5,7 @@ import com.openai.models.enums.JobTitle;
 import com.openai.models.enums.LearningStyle;
 import jakarta.persistence.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -25,6 +26,9 @@ public class User {
     private LearningStyle learningStyle;
     @Enumerated(EnumType.STRING)
     private Aspiration aspiration;
+
+    @Column
+    private LocalDate dateJoined;
     @Column
     private List<UserSkill> userSkills;
 
