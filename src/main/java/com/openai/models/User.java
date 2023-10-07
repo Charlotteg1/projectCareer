@@ -19,11 +19,11 @@ public class User {
     private String name;
     @Column
     private String email;
-    @Column
+    @Enumerated(EnumType.STRING)
     private JobTitle jobTitle;
-    @Column
+    @Enumerated(EnumType.STRING)
     private LearningStyle learningStyle;
-    @Column
+    @Enumerated(EnumType.STRING)
     private Aspiration aspiration;
     @Column
     private List<UserSkill> userSkills;
