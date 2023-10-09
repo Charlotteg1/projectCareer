@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './ChatGPT.css';
 
 const ChatGPT = () => {
@@ -47,6 +47,14 @@ const ChatGPT = () => {
 
     }
 
+    useEffect=(()=>{
+      if(entryValue===""){
+        setResponse("")
+        console.log(response)
+      }
+    },[entryValue])
+
+
 // create form and get response
     return (<>
     <h1>Chat GPT send and response</h1>
@@ -73,8 +81,9 @@ const ChatGPT = () => {
         </form>
 
         <div>
-        <h2>ChatGPT responded with:</h2>
-        <p>{response}</p> 
+        {response && (<div><h2>ChatGPT responded with:</h2>
+        <p>{response}</p> </div>)}
+        
       </div>
     </>)
 }
